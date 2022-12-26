@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,10 @@
   "homepage": "https://github.com/JerimiahK/nhlApp#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "nodemon": "^2.0.20"
+    "express-handlebars": "^6.0.6",
+    "handlebars": "^4.7.7",
+    "mdb-ui-kit": "^6.0.1",
+    "nodemon": "^2.0.20",
+    "sass": "^1.57.1"
   }
 }

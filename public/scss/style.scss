@@ -1,0 +1,27 @@
+$primary-color: #0d0d0d;
+$light-color: #fff;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: $primary-color;
+}
+
+#navbarText {
+    color: $light-color;
+    font-family: 'Graduate', cursive;
+}
+
+#navbarBtn {
+    color: $light-color;
+}
+
+.dropdown-item {
+    text-align: center;
+    text-decoration: none;
+    color: $light-color;
+}

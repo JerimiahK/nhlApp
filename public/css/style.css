@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  background-color: #0d0d0d;
+}
+
+#navbarText {
+  color: #fff;
+  font-family: "Graduate", cursive;
+}
+
+#navbarBtn {
+  color: #fff;
+}
+
+.dropdown-item {
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}
