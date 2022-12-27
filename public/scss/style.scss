@@ -7,6 +7,12 @@ $light-color: #fff;
     box-sizing: border-box;
 }
 
+body {
+    background-position: center;
+    background-size: cover;
+    background-image: url(../assets/images/chris-liverani-5oZ9uVx7buc-unsplash.jpg);
+}
+
 .navbar {
     background-color: $primary-color;
 }
@@ -24,4 +30,91 @@ $light-color: #fff;
     text-align: center;
     text-decoration: none;
     color: $light-color;
+}
+
+.currentGame {
+    font-family: 'Roboto Condensed', sans-serif;
+    padding: 30px;
+    height: 100vh;
+}
+
+.currentGameBox {
+    background-color: #fff;
+    overflow: scroll;
+    height: 100%;
+    border: 5px solid black;
+    border-radius: 30px;
+}
+
+.currentGameHeader {
+    height: 47%;
+    text-align: center;
+    border-bottom: 2px black solid;
+}
+
+.currentGameHeader h5 {
+    margin: 0;
+}
+
+.headerContainer {
+    margin: 20px;
+    height: 90%;
+}
+
+.headerRow {
+    display: flex;
+    flex-direction: row;
+    height: 90%;
+}
+
+.headerScoreDash {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.headerColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+
+#headerLogo {
+    width: 40%;
+    height: auto;
+}
+
+#headerScore {
+    font-size: 350%;
+}
+
+#column {
+    font-weight: 700;
+    color: #0d0d0d;
+    height: 53%;
+    width: 100%;
+}
+
+.row {
+    height: 25%;
+}
+
+.row p {
+    text-decoration: underline;
+    margin-bottom: 0;
+}
+
+.lastRow {
+    border-bottom: none;
+}
+
+.columnLeft {
+    border-right: 2px solid black;
+}
+
+#goalieName {
+    color: rgb(15, 84, 144);
+    text-decoration: none;
 }

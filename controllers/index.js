@@ -1,9 +1,9 @@
 const router = require("express").Router();
 
-const pageRoutes = require("./page");
+// const pageRoutes = require("./page");
 const homeRoute = require("./homeRoutes");
 
 router.use("/", homeRoute);
-router.use("/page", pagesRoute);
+// router.use("/pages", pageRoute);
 
 module.exports = router;
