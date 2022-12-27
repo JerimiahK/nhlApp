@@ -34,7 +34,7 @@ body {
 
 .currentGame {
     font-family: 'Roboto Condensed', sans-serif;
-    padding: 30px;
+    padding: 20px;
     height: 100vh;
 }
 
@@ -111,7 +111,6 @@ body {
 }
 
 .row p {
-    text-decoration: underline;
     margin-bottom: 0;
 }
 
@@ -124,5 +123,10 @@ body {
 }
 
 .liveStat {
+    font-weight: 400;
     text-decoration: none;
+}
+
+.staticValue {
+    text-decoration: underline;
 }

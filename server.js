@@ -3,7 +3,6 @@ const path = require("path");
 const exphbs = require("express-handlebars");
 const helpers = require("./utils/helpers");
 
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -19,5 +18,5 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(require("./controllers"));
 
 app.listen(PORT, () => {
-  console.log(`Listening on Port http://localhost:${PORT}`);
+  console.log(`Listening on Port http://localhost:${PORT}/home`);
 });
