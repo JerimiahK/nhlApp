@@ -78,6 +78,15 @@ body {
   height: 100%;
 }
 
+.headerPeriod {
+  color: #0d0d0d;
+  margin: 20px 0 0 0;
+}
+
+.headerTime {
+  color: #0d0d0d;
+}
+
 #headerLogo {
   width: 40%;
   height: auto;
@@ -87,7 +96,7 @@ body {
   font-size: 350%;
 }
 
-#column {
+#statsColumn {
   font-weight: 700;
   color: #0d0d0d;
   height: 53%;
@@ -111,7 +120,6 @@ body {
   border-right: 2px solid black;
 }
 
-#goalieName {
-  color: rgb(15, 84, 144);
+.liveStat {
   text-decoration: none;
 }
