@@ -1,9 +1,9 @@
 const router = require("express").Router();
 
-// const pageRoutes = require("./page");
-const homeRoute = require("./homeRoutes");
+// const pageRoutes = require("./page-routes");
+const homeRoute = require("./home-currentGame");
 
 router.use("/", homeRoute);
-// router.use("/pages", pageRoute);
+// router.use("/pages", pageRoutes);
 
 module.exports = router;
