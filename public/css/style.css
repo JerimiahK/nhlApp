@@ -11,7 +11,7 @@ body {
 }
 
 .navbar {
-  background-color: #0d0d0d;
+  background-color: rgba(13, 13, 13, 0.6862745098);
 }
 
 #navbarText {
@@ -29,6 +29,20 @@ body {
   color: #fff;
 }
 
+.collapseBackground {
+  font-family: "Roboto Condensed", sans-serif;
+  background-color: rgba(13, 13, 13, 0.6862745098);
+}
+
+#nextButton {
+  position: relative;
+  bottom: 2%;
+  left: 65%;
+  background-color: rgba(13, 13, 13, 0.6862745098);
+  color: #fff;
+  width: 25%;
+}
+
 .currentGame {
   font-family: "Roboto Condensed", sans-serif;
   padding: 20px;
@@ -36,7 +50,7 @@ body {
 }
 
 .currentGameBox {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.737254902);
   overflow: scroll;
   height: 100%;
   border: 5px solid black;

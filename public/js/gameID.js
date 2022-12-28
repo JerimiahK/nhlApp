@@ -7,8 +7,9 @@ const url = `https://api.sportradar.us/nhl/trial/v7/en/games/${year}/${month}/${
 async function currentGame() {
   const gameData = await fetch(url);
   const data = await gameData.json();
-  latestGameID = data.games[8].id;
+  latestGameID = data.games[0].id;
 }
 
 currentGame();
+
 module.exports = currentGame;

@@ -1,11 +1,14 @@
-<div class="currentGame">
+<div id="currentGame" class="currentGame">
+    <button id="nextButton">
+        NEXT
+    </button>
     <div class="currentGameBox">
         <div class="currentGameHeader">
             <h5>Current Game</h5>
             <div class="headerContainer">
                 <div class="headerRow">
                     <div class="col-5 headerColumn">
-                        <img id="headerLogo" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Colorado_Avalanche_logo.svg/1200px-Colorado_Avalanche_logo.svg.png" alt="">
+                        {{!-- <img id="headerLogo" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/{{currentData.away.market}}_{{currentData.away.name}}_logo.svg/1200px-{{currentData.away.market}}_{{currentData.away.name}}_logo.svg.png" alt=""> --}}
                         <h6 id="headerTeam">{{currentData.away.market}} <br>{{currentData.away.name}}</h6>
                         <h1 id="headerScore">{{currentData.away.points}}</h1>
                     </div>
@@ -14,9 +17,9 @@
                         <p class="headerTime">{{currentData.clock_decimal}}</p>
                     </div>
                     <div class="col-5 headerColumn">
-                        <img id="headerLogo"
+                        {{!-- <img id="headerLogo"
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/New_York_Rangers.svg/1200px-New_York_Rangers.svg.png"
-                            alt="">
+                            alt=""> --}}
                         <h6 id="headerTeam">{{currentData.home.market}} <br>{{currentData.home.name}}</h6>
                         <h1 id="headerScore">{{currentData.home.points}}</h1>
                     </div>
@@ -27,37 +30,41 @@
             <div class="row">
                 <div class="col-6 columnLeft">
                     <p class="staticValue">S.O.G:</p>
+                    <p class="liveStat">{{currentData.away.statistics.total.shots}}</p>
                 </div>
                 <div class="col-6 columnRight">
                     <p class="staticValue">S.O.G:</p>
+                    <p class="liveStat">{{currentData.home.statistics.total.shots}}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6 columnLeft">
                     <p class="staticValue">Faceoff Wins:</p>
+                    <p class="liveStat">{{currentData.away.statistics.total.faceoffs_won}}</p>
                 </div>
                 <div class="col-6 columnRight">
                     <p class="staticValue">Faceoff Wins:</p>
+                    <p class="liveStat">{{currentData.home.statistics.total.faceoffs_won}}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6 columnLeft">
-                    <p class="staticValue">T.O.P:</p>
-                    <p class="liveStat">19:42</p>
+                    <p class="staticValue">Hits:</p>
+                    <p class="liveStat">{{currentData.home.statistics.total.hits}}</p>
                 </div>
                 <div class="col-6 columnRight">
-                    <p class="staticValue">T.O.P:</p>
-                    <p class="liveStat">12:54</p>
+                    <p class="staticValue">Hits:</p>
+                    <p class="liveStat">{{currentData.away.statistics.total.hits}}</p>
                 </div>
             </div>
             <div class="lastRow row">
                 <div id="homeGoalie" class="col-6 columnLeft">
-                    <p class="staticValue">Goalie In Net:</p>
-                    <p class="liveStat">Alexander Georgiev</p>
+                    <p class="staticValue">SVV%:</p>
+                    <p class="liveStat">{{currentData.away.goaltending.total.saves_pct}}</p>
                 </div>
                 <div id="awayGoalie" class="col-6 columnRight">
-                    <p class="staticValue">Goalie In Net:</p>
-                    <p class="liveStat">Igor Shesterkien</p>
+                    <p class="staticValue">SVV%:</p>
+                    <p class="liveStat">{{currentData.home.goaltending.total.saves_pct}}</p>
                 </div>
             </div>
         </div>

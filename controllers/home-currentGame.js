@@ -1,18 +1,17 @@
 const { response } = require("express");
 const router = require("express").Router();
-const currentGame = require("../public/js/script");
-console.log(currentGame);
+const currentGame = require("../public/js/gameID");
+// console.log(currentGame);
 
 router.get("/home", async (req, res) => {
   try {
-    const box = `http://api.sportradar.us/nhl/trial/v7/en/games/${latestGameID}/analytics.json?api_key=hpxpgrv2r94ta5maqhzhxgnx`;
-    console.log(box);
+    const box = `http://api.sportradar.us/nhl/trial/v7/en/games/${latestGameID}/summary.json?api_key=hpxpgrv2r94ta5maqhzhxgnx`;
     const recentGame = await fetch(box);
     const currentData = await recentGame.json();
-    console.log(currentData);
+    // console.log(currentData);
 
     res.render("homepage", {
-      currentData
+      currentData,
     });
   } catch (err) {
     res.status(500).json(err);
