@@ -6,19 +6,19 @@
                 <div class="headerRow">
                     <div class="col-5 headerColumn">
                         <img id="headerLogo" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Colorado_Avalanche_logo.svg/1200px-Colorado_Avalanche_logo.svg.png" alt="">
-                        <h6 id="headerTeam">Colorado <br>Avalanche</h6>
-                        <h1 id="headerScore">3</h1>
+                        <h6 id="headerTeam">{{currentData.away.market}} <br>{{currentData.away.name}}</h6>
+                        <h1 id="headerScore">{{currentData.away.points}}</h1>
                     </div>
                     <div>
-                        <p class="headerPeriod">2nd Period</p>
-                        <p class="headerTime">12:32</p>
+                        <p class="headerPeriod">Period {{currentData.period}}</p>
+                        <p class="headerTime">{{currentData.clock_decimal}}</p>
                     </div>
                     <div class="col-5 headerColumn">
                         <img id="headerLogo"
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/New_York_Rangers.svg/1200px-New_York_Rangers.svg.png"
                             alt="">
-                        <h6 id="headerTeam">New York <br>Rangers</h6>
-                        <h1 id="headerScore">0</h1>
+                        <h6 id="headerTeam">{{currentData.home.market}} <br>{{currentData.home.name}}</h6>
+                        <h1 id="headerScore">{{currentData.home.points}}</h1>
                     </div>
                 </div>
             </div>
