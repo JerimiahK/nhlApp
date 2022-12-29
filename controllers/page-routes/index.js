@@ -6,6 +6,6 @@ const signIn = require("./signIn-routes");
 
 router.use("/games", allGames);
 router.use("/favorites", favoriteTeams);
-router.use("/signIn", signIn);
+router.use("/sign-in", signIn);
 
 module.exports = router;

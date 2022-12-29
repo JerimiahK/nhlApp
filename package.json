@@ -20,12 +20,14 @@
   },
   "homepage": "https://github.com/JerimiahK/nhlApp#readme",
   "dependencies": {
+    "@nhl-api/teams": "^3.1.4",
     "dayjs": "^1.11.7",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "handlebars": "^4.7.7",
     "hbs": "^4.2.0",
     "mdb-ui-kit": "^6.0.1",
+    "mongodb": "^4.13.0",
     "node-fetch": "^3.3.0",
     "nodemon": "^2.0.20",
     "sass": "^1.57.1"

@@ -1,7 +1,4 @@
 <div id="currentGame" class="currentGame">
-    <button id="nextButton">
-        NEXT
-    </button>
     <div class="currentGameBox">
         <div class="currentGameHeader">
             <h5>Current Game</h5>
@@ -9,19 +6,39 @@
                 <div class="headerRow">
                     <div class="col-5 headerColumn">
                         {{!-- <img id="headerLogo" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/{{currentData.away.market}}_{{currentData.away.name}}_logo.svg/1200px-{{currentData.away.market}}_{{currentData.away.name}}_logo.svg.png" alt=""> --}}
-                        <h6 id="headerTeam">{{currentData.away.market}} <br>{{currentData.away.name}}</h6>
-                        <h1 id="headerScore">{{currentData.away.points}}</h1>
+                        <h6 id="headerTeam">{{liveData.liveData.boxscore.teams.away.team.name}}</h6>
+                        <p class="teamRecord">{{teamRecords.away.leagueRecord.wins}}-{{teamRecords.away.leagueRecord.losses}}-{{teamRecords.away.leagueRecord.ot}}</p>
+                        {{#if liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}}
+                        <h1 id="headerScore">{{liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}}</h1>
+                        {{else}}
+                        <h1 id="headerScore">0</h1>
+                        {{/if}}
                     </div>
                     <div>
-                        <p class="headerPeriod">Period {{currentData.period}}</p>
-                        <p class="headerTime">{{currentData.clock_decimal}}</p>
+                        {{#if liveData.liveData.linescore.currentPeriodOrdinal}}
+                        <p class="headerPeriod">{{liveData.liveData.linescore.currentPeriodOrdinal}} Period</p>
+                        {{else}}
+                        <p class="headerPeriod">1st Period</p>
+                        {{/if}}
+                        {{#if liveData.liveData.linescore.currentPeriodTimeRemaining}}
+                        <p class="headerTime">{{liveData.liveData.linescore.currentPeriodTimeRemaining}}</p>
+                        {{else}}
+                        <p class="headerTime">20:00</p>
+                        {{/if}}
                     </div>
                     <div class="col-5 headerColumn">
                         {{!-- <img id="headerLogo"
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/New_York_Rangers.svg/1200px-New_York_Rangers.svg.png"
                             alt=""> --}}
-                        <h6 id="headerTeam">{{currentData.home.market}} <br>{{currentData.home.name}}</h6>
-                        <h1 id="headerScore">{{currentData.home.points}}</h1>
+                        <h6 id="headerTeam">{{liveData.liveData.boxscore.teams.home.team.name}}</h6>
+                        <p class="teamRecord">
+                            {{teamRecords.home.leagueRecord.wins}}-{{teamRecords.home.leagueRecord.losses}}-{{teamRecords.home.leagueRecord.ot}}
+                        </p>
+                        {{#if liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}
+                        <h1 id="headerScore">{{liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}</h1>
+                        {{else}}
+                        <h1 id="headerScore">0</h1>
+                        {{/if}}
                     </div>
                 </div>
             </div>
@@ -30,42 +47,75 @@
             <div class="row">
                 <div class="col-6 columnLeft">
                     <p class="staticValue">S.O.G:</p>
-                    <p class="liveStat">{{currentData.away.statistics.total.shots}}</p>
+                    {{#if liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots}}
+                    <p class="liveStat">{{liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots}}</p>
+                    {{else}}
+                    <p class="liveStat">0</p>
+                    {{/if}}
                 </div>
                 <div class="col-6 columnRight">
                     <p class="staticValue">S.O.G:</p>
-                    <p class="liveStat">{{currentData.home.statistics.total.shots}}</p>
+                    {{#if liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots}}
+                    <p class="liveStat">{{liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots}}</p>
+                    {{else}}
+                    <p class="liveStat">0</p>
+                    {{/if}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-6 columnLeft">
-                    <p class="staticValue">Faceoff Wins:</p>
-                    <p class="liveStat">{{currentData.away.statistics.total.faceoffs_won}}</p>
+                    <p class="staticValue">Faceoff Win Pct</p>
+                    {{#if liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}
+                    <p class="liveStat">{{liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}%</p>
+                    {{else}}
+                    <p class="liveStat">0%</p>
+                    {{/if}}
                 </div>
                 <div class="col-6 columnRight">
-                    <p class="staticValue">Faceoff Wins:</p>
-                    <p class="liveStat">{{currentData.home.statistics.total.faceoffs_won}}</p>
+                    <p class="staticValue">Faceoff Win Pct</p>
+                    {{#if liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}
+                    <p class="liveStat">{{liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}%</p>
+                    {{else}}
+                    <p class="liveStat">0%</p>
+                    {{/if}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-6 columnLeft">
-                    <p class="staticValue">Hits:</p>
-                    <p class="liveStat">{{currentData.home.statistics.total.hits}}</p>
+                    <p class="staticValue">Hits</p>
+                    {{#if liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits}}
+                    <p class="liveStat">{{liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits}}</p>
+                    {{else}}
+                    <p class="liveStat">0</p>
+                    {{/if}}
                 </div>
                 <div class="col-6 columnRight">
-                    <p class="staticValue">Hits:</p>
-                    <p class="liveStat">{{currentData.away.statistics.total.hits}}</p>
+                    <p class="staticValue">Hits</p>
+                    {{#if liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits}}
+                    <p class="liveStat">{{liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits}}</p>
+                    {{else}}
+                    <p class="liveStat">0</p>
+                    {{/if}}
                 </div>
             </div>
             <div class="lastRow row">
                 <div id="homeGoalie" class="col-6 columnLeft">
-                    <p class="staticValue">SVV%:</p>
-                    <p class="liveStat">{{currentData.away.goaltending.total.saves_pct}}</p>
+                    <p class="staticValue">PIM</p>
+                    {{#if liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.pim}}
+                    <p class="liveStat">{{liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.pim}}</p>
+                    {{else}}
+                    <p class="liveStat">0</p>
+                    {{/if}}
                 </div>
                 <div id="awayGoalie" class="col-6 columnRight">
-                    <p class="staticValue">SVV%:</p>
-                    <p class="liveStat">{{currentData.home.goaltending.total.saves_pct}}</p>
+                    <p class="staticValue">PIM</p>
+                    {{#if liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.pim}}
+                    <p class="liveStat">{{liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.pim}}</p>
+                    {{else}}
+                    <p class="liveStat">0</p>
+                    {{/if}}
                 </div>
             </div>
         </div>
     </div>
+</div>
