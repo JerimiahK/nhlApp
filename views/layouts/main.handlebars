@@ -31,6 +31,19 @@
         </div>
     </nav>
     <div class="collapse" id="navbarToggleExternalContent3">
+        {{#if loggedIn}}
+        <div class="collapseBackground shadow-3 p-4">
+            <button class="btn btn-link btn-block border-bottom m-0">
+                <a class="dropdown-item" href="/home">Home</a>
+            </button>
+            <button class="btn btn-link btn-block border-bottom m-0">
+                <a class="dropdown-item" href="/pages/games">Games</a>
+            </button>
+            <button class="btn btn-link btn-block m-0">
+                <a class="dropdown-item" href="/home">Sign Out</a>
+            </button>
+        </div>
+            {{else}}
         <div class="collapseBackground shadow-3 p-4">
             <button class="btn btn-link btn-block border-bottom m-0">
                 <a class="dropdown-item" href="/home">Home</a>
@@ -42,6 +55,7 @@
                 <a class="dropdown-item" href="/pages/users/login">Sign In</a>
             </button>
         </div>
+        {{/if}}
     </div>
     <main>
         {{{body}}}

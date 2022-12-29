@@ -1,4 +1,3 @@
-const mongodb = require("mongodb").MongoClient;
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
@@ -39,11 +38,32 @@ router.post("/", async (req, res) => {
   );
 });
 
-router.post("/login", (req, res) => {
-  const userData = db.collection("userCollection").find({
+router.post("/login", async (req, res) => {
+  const userData = await db.collection("userCollection").findOne({
     email: req.body.email,
     password: req.body.password,
+  }
+  );
+  console.log(userData);
+  if (!userData) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password. Please try again!" });
+
+      return;
+    }
+    const validPassword = req.body.password
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password, please try again!" });
+      return;
+    }
+
+  req.session.save(() => {
+    req.session.loggedIn = true;
   });
+
   res.status(200).json({ user: userData });
 });
 
