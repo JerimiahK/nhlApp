@@ -143,3 +143,28 @@ body {
 .staticValue {
     text-decoration: underline;
 }
+
+#loginForm {
+    width: fit-content;
+}
+
+#loginBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.form-label {
+    color: #0d0d0d;
+}
+
+.loginButton {
+    background-color: #0d0d0d;
+    color: #fff;
+}
+
+#loginCreate {
+    color: #0d0d0d;
+    text-align: center;
+}

@@ -1,6 +1,7 @@
 const { response } = require("express");
 const router = require("express").Router();
 const url = `https://statsapi.web.nhl.com/api/v1/schedule`;
+let mostRecentGameID;
 
 router.get("/home", async (req, res) => {
   try {
@@ -8,9 +9,13 @@ router.get("/home", async (req, res) => {
       method: "GET",
     });
     const currentData = await recentGames.json();
-    const games = currentData.dates[0].games
-    const gameStatus = games.filter(game => game.status.detailedState === "In Progress")
-    const mostRecentGameID = gameStatus.pop().gamePk
+    const games = currentData.dates[0].games;
+    
+    const gameStatus = games.filter(
+      (game) =>
+        game.status.detailedState);
+        // console.log(gameStatus);
+    mostRecentGameID = gameStatus.pop().gamePk;
     const teamRecords = currentData.dates[0].games[0].teams;
 
     const box = `https://statsapi.web.nhl.com/api/v1/game/${mostRecentGameID}/feed/live`;
