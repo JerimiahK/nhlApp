@@ -8,18 +8,18 @@ router.get("/home", async (req, res) => {
       method: "GET",
     });
     const currentData = await recentGames.json();
-    // console.log(currentData.dates[0].games[0].teams);
-    const currentID = currentData.dates[0].games[1].gamePk;
+    const games = currentData.dates[0].games
+    const gameStatus = games.filter(game => game.status.detailedState === "In Progress")
+    const mostRecentGameID = gameStatus.pop().gamePk
     const teamRecords = currentData.dates[0].games[0].teams;
 
-    const box = `https://statsapi.web.nhl.com/api/v1/game/${currentID}/feed/live`;
+    const box = `https://statsapi.web.nhl.com/api/v1/game/${mostRecentGameID}/feed/live`;
 
     const liveGameFetch = await fetch(box, {
       method: "GET",
     });
 
     const liveData = await liveGameFetch.json();
-    // console.log(liveData);
 
     res.render("homepage", {
       teamRecords,

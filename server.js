@@ -30,7 +30,3 @@ mongodb.connect(
     });
   }
 );
-
-// app.listen(PORT, () => {
-//   console.log(`Listening on Port http://localhost:${PORT}/home`);
-// });
