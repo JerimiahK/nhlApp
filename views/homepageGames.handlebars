@@ -1,18 +1,23 @@
 <div id="currentGame" class="currentGame">
-    {{!-- <button id="nextButton">
-        <a href="/home?id={{id}}">NEXT</a>
-    </button> --}}
+    <button id="nextButton">
+        <a href="/home/{{id}}">NEXT</a>
+    </button>
     <div class="currentGameBox">
         <div class="currentGameHeader">
             <h5>Current Game</h5>
             <div class="headerContainer">
                 <div class="headerRow">
                     <div class="col-5 headerColumn">
-                        {{!-- <img id="headerLogo" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/{{currentData.away.market}}_{{currentData.away.name}}_logo.svg/1200px-{{currentData.away.market}}_{{currentData.away.name}}_logo.svg.png" alt=""> --}}
+                        {{!-- <img id="headerLogo"
+                            src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/{{currentData.away.market}}_{{currentData.away.name}}_logo.svg/1200px-{{currentData.away.market}}_{{currentData.away.name}}_logo.svg.png"
+                            alt=""> --}}
                         <h6 id="headerTeam">{{liveData.liveData.boxscore.teams.away.team.name}}</h6>
-                        <p class="teamRecord">{{teamRecords.away.leagueRecord.wins}}-{{teamRecords.away.leagueRecord.losses}}-{{teamRecords.away.leagueRecord.ot}}</p>
+                        <p class="teamRecord">
+                            {{teamRecords.away.leagueRecord.wins}}-{{teamRecords.away.leagueRecord.losses}}-{{teamRecords.away.leagueRecord.ot}}
+                        </p>
                         {{#if liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}}
-                        <h1 id="headerScore">{{liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}}</h1>
+                        <h1 id="headerScore">{{liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.goals}}
+                        </h1>
                         {{else}}
                         <h1 id="headerScore">0</h1>
                         {{/if}}
@@ -38,7 +43,8 @@
                             {{teamRecords.home.leagueRecord.wins}}-{{teamRecords.home.leagueRecord.losses}}-{{teamRecords.home.leagueRecord.ot}}
                         </p>
                         {{#if liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}
-                        <h1 id="headerScore">{{liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}</h1>
+                        <h1 id="headerScore">{{liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.goals}}
+                        </h1>
                         {{else}}
                         <h1 id="headerScore">0</h1>
                         {{/if}}
@@ -69,7 +75,8 @@
                 <div class="col-6 columnLeft">
                     <p class="staticValue">Faceoff Win Pct</p>
                     {{#if liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}
-                    <p class="liveStat">{{liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}%</p>
+                    <p class="liveStat">
+                        {{liveData.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage}}%</p>
                     {{else}}
                     <p class="liveStat">0%</p>
                     {{/if}}
@@ -77,7 +84,8 @@
                 <div class="col-6 columnRight">
                     <p class="staticValue">Faceoff Win Pct</p>
                     {{#if liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}
-                    <p class="liveStat">{{liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}%</p>
+                    <p class="liveStat">
+                        {{liveData.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage}}%</p>
                     {{else}}
                     <p class="liveStat">0%</p>
                     {{/if}}
