@@ -17,16 +17,6 @@ const store = new MongoDBStore({
 
 const hbs = exphbs.create({ helpers });
 
-app.use(require("express-session")({
-  secret: "12345",
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
-  },
-  store: store,
-  resave: true,
-  saveUninitialized: true
-}));
-
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
@@ -34,6 +24,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(
+  require("express-session")({
+    secret: "12345",
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+    },
+    store: store,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 app.use(require("./controllers"));
 
 mongodb.connect(
@@ -45,4 +46,4 @@ mongodb.connect(
       console.log(`Example app listening at http://localhost:${PORT}`);
     });
   }
-)
+);

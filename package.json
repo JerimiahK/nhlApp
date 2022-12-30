@@ -21,6 +21,7 @@
   "homepage": "https://github.com/JerimiahK/nhlApp#readme",
   "dependencies": {
     "@nhl-api/teams": "^3.1.4",
+    "bcrypt": "^5.1.0",
     "connect-mongodb-session": "^3.1.1",
     "dayjs": "^1.11.7",
     "express": "^4.18.2",
@@ -30,6 +31,8 @@
     "hbs": "^4.2.0",
     "mdb-ui-kit": "^6.0.1",
     "mongodb": "^4.13.0",
+    "mongoose": "^6.8.2",
+    "mongoose-bcrypt": "^1.10.0",
     "node-fetch": "^3.3.0",
     "nodemon": "^2.0.20",
     "sass": "^1.57.1"
