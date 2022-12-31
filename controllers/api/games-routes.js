@@ -1,7 +1,7 @@
 const { model } = require("mongoose");
 const router = require("express").Router();
 const url = `http://statsapi.web.nhl.com/api/v1/schedule`;
-const gamesArray = [];
+// let gamesArray = [];
 
 router.get("/games", async (req, res) => {
   try {
@@ -10,6 +10,7 @@ router.get("/games", async (req, res) => {
     });
     const currentData = await todaysGames.json();
     const allGames = currentData.dates[0].games;
+    let gamesArray = [];
     for (let g of allGames) {
       gamesArray.push({
         homeName: g.teams.home.team.name,
@@ -21,7 +22,7 @@ router.get("/games", async (req, res) => {
     }
     res.render("games", {
       gamesArray,
-      // loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);

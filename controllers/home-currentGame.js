@@ -2,7 +2,6 @@ const { response } = require("express");
 const { Db } = require("mongodb");
 const router = require("express").Router();
 const url = `https://statsapi.web.nhl.com/api/v1/schedule`;
-let FinalGame = "";
 let gameID;
 let gamesArray = [];
 
@@ -67,7 +66,7 @@ router.get("/home", async (req, res) => {
       method: "GET",
     });
     const liveData = await liveGameFetch.json();
-    console.log(liveData.gameData.teams);
+    // console.log(liveData.gameData.teams);
 
     res.render("homepage", {
       gamesArray,
