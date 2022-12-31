@@ -173,6 +173,7 @@ body {
 }
 
 #allGamesBox {
+  margin: 10px;
   font-weight: 800;
   background: #dcdcdc;
   display: flex;

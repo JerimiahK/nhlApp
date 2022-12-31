@@ -29,25 +29,25 @@ const logout = async () => {
   }
 };
 
-// const signupFormHandler = async (event) => {
-//   event.preventDefault();
-//   const email = $("#userSignUpEmail").val();
-//   const password = $("#userSignUpPassword").val();
-//   if (email && password) {
-//     const response = await fetch("/pages/users/sign-up", {
-//       method: "POST",
-//       body: JSON.stringify({ email, password }),
-//       headers: { "Content-Type": "application/json" },
-//     });
+const signupFormHandler = async (event) => {
+  event.preventDefault();
+  const email = $("#userSignUpEmail").val();
+  const password = $("#userSignUpPassword").val();
+  if (email && password) {
+    const response = await fetch("/pages/users", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: { "Content-Type": "application/json" },
+    });
 
-//     if (response.ok) {
-//       document.location.replace("/home");
-//     } else {
-//       alert(response.statusText);
-//     }
-//   }
-// };
+    if (response.ok) {
+      document.location.replace("/home");
+    } else {
+      alert(response.statusText);
+    }
+  }
+};
 
 $("#loginForm").on("submit", loginFormHandler);
 $("#logoutBtn").on("click", logout);
-// $("#signUpBox").on("submit", signupFormHandler);
+$("#signUpForm").on("submit", signupFormHandler);

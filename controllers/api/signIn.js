@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const { db } = require("../../models/User");
+const User = require("../../models/User");
 
 router.get("/", async (req, res) => {
   db.collection("userCollection")
@@ -17,10 +19,11 @@ router.get("/login", async (req, res) => {
   }
 });
 
+//gets sign up page
 router.get("/sign-up", async (req, res) => {
   try {
     if (req.session.loggedIn) {
-      res.redirect("/");
+      res.redirect("/home");
       return;
     }
     res.render("signup");
@@ -29,16 +32,20 @@ router.get("/sign-up", async (req, res) => {
   }
 });
 
+//new user
 router.post("/", async (req, res) => {
-  const newUser = 
-    console.log(req.body);
-    req.session.save(() => {
-      req.session.loggedIn = true;
+  const newUser = db.collection("userCollection").insertOne({
+    email: req.body.email,
+    password: req.body.password,
+  });
+  req.session.save(() => {
+    req.session.loggedIn = true;
 
-      res.status(200).json(newUser);
-    });
+    res.status(200).json(newUser);
+  });
 });
 
+//login route
 router.post("/login", async (req, res) => {
   const userData = await db.collection("userCollection").findOne({
     email: req.body.email,

@@ -10,12 +10,22 @@ router.get("/games", async (req, res) => {
     });
     const currentData = await todaysGames.json();
     const allGames = currentData.dates[0].games;
-    // for (let g of games)
-    console.log(allGames[0].teams);
-    res.render("games");
+    for (let g of allGames) {
+      gamesArray.push({
+        homeName: g.teams.home.team.name,
+        homeScore: g.teams.home.score,
+        awayName: g.teams.away.team.name,
+        awayScore: g.teams.away.score,
+        status: g.status.detailedState,
+      });
+    }
+    res.render("games", {
+      gamesArray,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
+//allGames.teams.[home or away].score = score
+//allGames.teams.[home or away].team.name = name
 module.exports = router;

@@ -1,6 +1,8 @@
 <div id="currentGame" class="currentGame">
     <div class="currentGameBox">
         <h2 id="todayGameText">Today's Games</h2>
+        {{#each gamesArray as |game|}}
         {{> game-cards}}
+        {{/each}}
     </div>
 </div>

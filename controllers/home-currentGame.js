@@ -12,7 +12,6 @@ router.get("/home", async (req, res) => {
     });
     const currentData = await recentGames.json();
     const games = currentData.dates[0].games;
-    // gameID = games.pop().gamePk;
     for (let g of games) {
       gamesArray.push({
         id: g.gamePk,
@@ -26,7 +25,6 @@ router.get("/home", async (req, res) => {
       (status) => status.status == "Scheduled"
     );
     const final = gamesArray.filter((status) => status.status == "Final");
-    // const scheduledID = inProgress.pop().id;
     if (inProgress) {
       gameID = inProgress.pop().id
     } else if (final) {
@@ -34,9 +32,6 @@ router.get("/home", async (req, res) => {
     } else {
       gameID = games[0].gamePk
     }
-    //  IF all games = Scheduled, THAN gameID = gameArray[0].id
-    // ELSE Loop through games array, find last games Index === "In Progress" THAN firstID = games[i].pop().gamePk
-    // ELSE IF Loop through games array, THAN firstID = games.pop().gamePk
     const teamRecords = currentData.dates[0].games[0].teams;
     const box = `https://statsapi.web.nhl.com/api/v1/game/${gameID}/feed/live`;
     const liveGameFetch = await fetch(box, {
