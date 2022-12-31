@@ -177,6 +177,8 @@ body {
 }
 
 #allGamesBox {
+  text-decoration: none;
+  color: #0d0d0d;
   margin: 10px;
   font-weight: 800;
   background: #dcdcdc;

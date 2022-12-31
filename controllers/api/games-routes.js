@@ -13,6 +13,7 @@ router.get("/games", async (req, res) => {
     let gamesArray = [];
     for (let g of allGames) {
       gamesArray.push({
+        id: g.gamePk,
         homeName: g.teams.home.team.name,
         homeScore: g.teams.home.score,
         awayName: g.teams.away.team.name,
@@ -28,6 +29,23 @@ router.get("/games", async (req, res) => {
     res.status(500).json(err);
   }
 });
-//allGames.teams.[home or away].score = score
-//allGames.teams.[home or away].team.name = name
+
+router.get("/game/:id", async (req, res) => {
+  try {
+    const gameID = await req.params.id;
+    const box = `https://statsapi.web.nhl.com/api/v1/game/${gameID}/feed/live`;
+
+    const gameFetch = await fetch(box, {
+      method: "GET",
+    });
+    const liveData = await gameFetch.json();
+
+    res.render("selectedGame", {
+      liveData,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
