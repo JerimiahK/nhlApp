@@ -21,6 +21,7 @@ router.get("/games", async (req, res) => {
     }
     res.render("games", {
       gamesArray,
+      // loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
