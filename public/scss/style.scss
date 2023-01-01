@@ -213,6 +213,7 @@ body {
     justify-content: center;
 }
 
-#allGamesTime p {
-    margin: 0;
+.gameStatus {
+    display: flex;
+    align-items: center;
 }

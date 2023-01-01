@@ -3,7 +3,9 @@ const { Db } = require("mongodb");
 const router = require("express").Router();
 const url = `https://statsapi.web.nhl.com/api/v1/schedule`;
 let gameID;
+let currentTeamRecords;
 let gamesArray = [];
+let teamRecords = [];
 
 router.get("/home", async (req, res) => {
   try {
@@ -23,6 +25,9 @@ router.get("/home", async (req, res) => {
       gamesArray.push({
         id: g.gamePk,
         status: g.status.detailedState,
+      });
+      teamRecords.push({
+        id: g.gamePk,
         homeWins: g.teams.home.leagueRecord.wins,
         homeLosses: g.teams.home.leagueRecord.losses,
         homeTies: g.teams.home.leagueRecord.ot,
@@ -35,7 +40,6 @@ router.get("/home", async (req, res) => {
     const scheduled = gamesArray.filter(
       (status) => status.status == "Scheduled"
     );
-
     //filters out an array of the games that are in progress
     const inProgress = gamesArray.filter(
       (status) => status.status == "In Progress"
@@ -55,10 +59,18 @@ router.get("/home", async (req, res) => {
       }
     };
     gameIDStatus();
-
-    //puts all the teams records into
-    const teamRecords = currentData.dates[0].games[0].teams;
-    // console.log(games);
+    for (let r of teamRecords) {
+      if (gameID === r.id) {
+        currentTeamRecords = {
+          homeWins: r.homeWins,
+          homeLosses: r.homeLosses,
+          homeTies: r.homeTies,
+          awayWins: r.awayWins,
+          awayLosses: r.awayLosses,
+          awayTies: r.awayTies,
+        };
+      }
+    }
 
     const box = `https://statsapi.web.nhl.com/api/v1/game/${gameID}/feed/live`;
 
@@ -66,9 +78,9 @@ router.get("/home", async (req, res) => {
       method: "GET",
     });
     const liveData = await liveGameFetch.json();
-    // console.log(liveData.gameData.teams);
 
     res.render("homepage", {
+      currentTeamRecords,
       gamesArray,
       liveData,
       loggedIn: req.session.loggedIn,

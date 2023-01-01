@@ -1,7 +1,6 @@
 const { model } = require("mongoose");
 const router = require("express").Router();
 const url = `http://statsapi.web.nhl.com/api/v1/schedule`;
-// let gamesArray = [];
 
 router.get("/games", async (req, res) => {
   try {
@@ -31,8 +30,43 @@ router.get("/games", async (req, res) => {
 });
 
 router.get("/game/:id", async (req, res) => {
+  let currentTeamRecords;
+  let teamRecords = [];
+  let gameID;
+
   try {
-    const gameID = await req.params.id;
+    const todaysGames = await fetch(url, {
+      method: "GET",
+    });
+    const currentData = await todaysGames.json();
+    const allGames = currentData.dates[0].games;
+    for (let g of allGames) {
+      teamRecords.push({
+        id: g.gamePk,
+        homeWins: g.teams.home.leagueRecord.wins,
+        homeLosses: g.teams.home.leagueRecord.losses,
+        homeTies: g.teams.home.leagueRecord.ot,
+        awayWins: g.teams.away.leagueRecord.wins,
+        awayLosses: g.teams.away.leagueRecord.losses,
+        awayTies: g.teams.away.leagueRecord.ot,
+      });
+    }
+
+    gameID = req.params.id;
+
+    for (let r of teamRecords) {
+      if (gameID == r.id) {
+        currentTeamRecords = {
+          homeWins: r.homeWins,
+          homeLosses: r.homeLosses,
+          homeTies: r.homeTies,
+          awayWins: r.awayWins,
+          awayLosses: r.awayLosses,
+          awayTies: r.awayTies,
+        };
+      }
+    }
+
     const box = `https://statsapi.web.nhl.com/api/v1/game/${gameID}/feed/live`;
 
     const gameFetch = await fetch(box, {
@@ -41,6 +75,7 @@ router.get("/game/:id", async (req, res) => {
     const liveData = await gameFetch.json();
 
     res.render("selectedGame", {
+      currentTeamRecords,
       liveData,
     });
   } catch (err) {
