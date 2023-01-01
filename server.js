@@ -41,7 +41,6 @@ mongodb.connect(
   process.env.MONGODB_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err, client) => {
-    db = client.db();
     app.listen(PORT, () => {
       console.log(`Example app listening at http://localhost:${PORT}`);
     });
