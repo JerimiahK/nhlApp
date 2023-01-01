@@ -40,7 +40,7 @@ app.use(require("./controllers"));
 mongodb.connect(
   process.env.MONGODB_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
-  (err, client) => {
+  () => {
     app.listen(PORT, () => {
       console.log(`Example app listening at http://localhost:${PORT}`);
     });
