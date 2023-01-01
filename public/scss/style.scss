@@ -60,13 +60,14 @@ body {
 }
 
 .currentGameHeader {
-    height: 47%;
+    height: 40%;
     text-align: center;
     border-bottom: 2px black solid;
 }
 
 .currentGameHeader h5 {
-    margin: 0;
+    margin: 15px;
+    font-weight: bolder;
 }
 
 .headerContainer {
@@ -77,7 +78,9 @@ body {
 .headerRow {
     display: flex;
     flex-direction: row;
-    height: 90%;
+    align-items: center;
+    justify-content: center;
+    height: 85%;
 }
 
 .headerScoreDash {
@@ -94,6 +97,11 @@ body {
     height: 100%;
 }
 
+.headerTeam {
+    font-weight: bolder;
+    font-size: 140%;
+}
+
 .headerPeriod {
     color: $primary-color;
     margin: 20px 0 0 0;
@@ -108,14 +116,14 @@ body {
     height: auto;
 }
 
-#headerScore {
+.headerScore {
     font-size: 350%;
 }
 
 #statsColumn {
     font-weight: 700;
     color: #0d0d0d;
-    height: 53%;
+    height: 58%;
     width: 100%;
 }
 
@@ -136,11 +144,13 @@ body {
 }
 
 .liveStat {
-    font-weight: 400;
+    font-size: 120%;
+    font-weight: 100;
     text-decoration: none;
 }
 
 .staticValue {
+    font-size: 120%;
     text-decoration: underline;
 }
 
@@ -182,9 +192,11 @@ body {
     color: #0d0d0d;
     margin: 10px;
     font-weight: 800;
+    font-size: 95%;
     background: #dcdcdc;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 95%;
     height: 13%;
@@ -199,7 +211,7 @@ body {
 }
 
 .allGamesTeamsBox {
-    width: 65%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -214,6 +226,14 @@ body {
 }
 
 .gameStatus {
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    font-weight: 300;
+}
+
+.gameScore {
+    padding-right: 10px;
 }
