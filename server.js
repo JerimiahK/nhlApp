@@ -42,7 +42,7 @@ mongodb.connect(
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err, client) => {
     db = client.db();
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT || PORT, () => {
       console.log(`Example app listening at http://localhost:${PORT}`);
     });
   }
