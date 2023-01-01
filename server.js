@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3001;
 
 const uri = `mongodb://0.0.0.0:27017/nhlProjectDB`;
 const store = new MongoDBStore({
-  uri: `mongodb://127.0.0.1:27017/nhlProjectDB`,
+  uri: `mongodb://0.0.0.0:27017/nhlProjectDB`,
   collection: "mySessions",
 });
 
