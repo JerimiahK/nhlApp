@@ -9,7 +9,7 @@ var MongoDBStore = require("connect-mongodb-session")(session);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const connectionStringURI = `mongodb://127.0.0.1:27017/nhlProjectDB`;
+const uri = `mongodb://0.0.0.0:27017/nhlProjectDB`;
 const store = new MongoDBStore({
   uri: `mongodb://127.0.0.1:27017/nhlProjectDB`,
   collection: "mySessions",
@@ -37,16 +37,13 @@ app.use(
 );
 app.use(require("./controllers"));
 
-// mongodb.connect(
-//   connectionStringURI,
-//   { useNewUrlParser: true, useUnifiedTopology: true },
-//   (err, client) => {
-//     db = client.db();
-//     app.listen(process.env.PORT || PORT, () => {
-//       console.log(`Example app listening at http://localhost:${PORT}`);
-//     });
-//   }
-// );
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`);
-});
+mongodb.connect(
+  uri,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  (err, client) => {
+    db = client.db();
+    app.listen(process.env.PORT || PORT, () => {
+      console.log(`Example app listening at http://localhost:${PORT}`);
+    });
+  }
+);
