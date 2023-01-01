@@ -50,7 +50,7 @@ router.get("/home", async (req, res) => {
 
     //creates a function that contains logic to display the most current game to be played, being played, or the last game of the night that finished
     const gameIDStatus = function () {
-      if (gamesArray[0].status == "In Progress") {
+      if (gamesArray[0].status == "In Progress" || "In Progress - Critical") {
         gameID = inProgress.pop().id;
       } else if (gamesArray.at(-1).status == "Final") {
         gameID = final.pop().id;
@@ -59,6 +59,7 @@ router.get("/home", async (req, res) => {
       }
     };
     gameIDStatus();
+    
     for (let r of teamRecords) {
       if (gameID === r.id) {
         currentTeamRecords = {
