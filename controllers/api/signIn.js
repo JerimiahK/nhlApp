@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const { db } = require("../../models/User");
-const User = require("../../models/User");
+const mongodb = require("mongodb").MongoClient
 
 router.get("/", async (req, res) => {
   db.collection("userCollection")

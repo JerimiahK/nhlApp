@@ -77,6 +77,7 @@ router.get("/game/:id", async (req, res) => {
     res.render("selectedGame", {
       currentTeamRecords,
       liveData,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
