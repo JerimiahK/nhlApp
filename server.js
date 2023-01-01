@@ -38,7 +38,7 @@ app.use(
 app.use(require("./controllers"));
 
 mongodb.connect(
-  connectionStringURI,
+  process.env.MONGODB_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err, client) => {
     db = client.db();
