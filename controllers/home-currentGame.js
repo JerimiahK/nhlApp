@@ -7,7 +7,7 @@ let currentTeamRecords;
 let gamesArray = [];
 let teamRecords = [];
 
-router.get("/home", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     //fetch to NHL API for current days general information on games (ie: total games)
     const recentGames = await fetch(url, {
@@ -59,7 +59,7 @@ router.get("/home", async (req, res) => {
       }
     };
     gameIDStatus();
-    
+
     for (let r of teamRecords) {
       if (gameID === r.id) {
         currentTeamRecords = {
