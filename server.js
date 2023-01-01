@@ -5,13 +5,13 @@ const exphbs = require("express-handlebars");
 const helpers = require("./utils/helpers");
 const session = require("express-session");
 var MongoDBStore = require("connect-mongodb-session")(session);
+require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const connectionStringURI = `mongodb://127.0.0.1:27017/nhlProjectDB`;
 const store = new MongoDBStore({
-  uri: `mongodb://127.0.0.1:27017/nhlProjectDB`,
+  uri: process.env.MONGODB_URL,
   collection: "mySessions",
 });
 
@@ -40,7 +40,8 @@ app.use(require("./controllers"));
 mongodb.connect(
   process.env.MONGODB_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
-  () => {
+  (err, client) => {
+    db = client.db();
     app.listen(PORT, () => {
       console.log(`Example app listening at http://localhost:${PORT}`);
     });
