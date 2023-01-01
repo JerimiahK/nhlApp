@@ -37,13 +37,16 @@ app.use(
 );
 app.use(require("./controllers"));
 
-mongodb.connect(
-  connectionStringURI,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  (err, client) => {
-    db = client.db();
-    app.listen(process.env.PORT || PORT, () => {
-      console.log(`Example app listening at http://localhost:${PORT}`);
-    });
-  }
-);
+// mongodb.connect(
+//   connectionStringURI,
+//   { useNewUrlParser: true, useUnifiedTopology: true },
+//   (err, client) => {
+//     db = client.db();
+//     app.listen(process.env.PORT || PORT, () => {
+//       console.log(`Example app listening at http://localhost:${PORT}`);
+//     });
+//   }
+// );
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`);
+});
