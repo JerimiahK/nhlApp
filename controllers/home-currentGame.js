@@ -59,10 +59,10 @@ router.get("/", async (req, res) => {
       }
     };
 
+    //calls the gameIDStatus function to determine what the most current game ID is based on the games status'
     gameIDStatus();
 
-    console.log(gameID);
-
+    //creates a for loop to find the the current teams records based on comparing the gameID with the teams record ID
     for (let r of teamRecords) {
       if (gameID === r.id) {
         currentTeamRecords = {
@@ -76,13 +76,18 @@ router.get("/", async (req, res) => {
       }
     }
 
+    //creates a variable containing the URL for the NHL API to get the most current game feed stats using the gameID
     const box = `https://statsapi.web.nhl.com/api/v1/game/${gameID}/feed/live`;
 
+    //fetches the most current games stats information
     const liveGameFetch = await fetch(box, {
       method: "GET",
     });
+
+    //puts the live game data into a json format inside of variable
     const liveData = await liveGameFetch.json();
 
+    //renders the homepage with the current teams records, the gamesArray, the live data, and the logged in status
     res.render("homepage", {
       currentTeamRecords,
       gamesArray,

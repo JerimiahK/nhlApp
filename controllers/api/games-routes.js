@@ -4,12 +4,17 @@ const url = `http://statsapi.web.nhl.com/api/v1/schedule`;
 
 router.get("/games", async (req, res) => {
   try {
+
     const todaysGames = await fetch(url, {
       method: "GET",
     });
+
     const currentData = await todaysGames.json();
+
     const allGames = currentData.dates[0].games;
+
     let gamesArray = [];
+
     for (let g of allGames) {
       gamesArray.push({
         id: g.gamePk,
@@ -20,6 +25,7 @@ router.get("/games", async (req, res) => {
         status: g.status.detailedState,
       });
     }
+
     res.render("games", {
       gamesArray,
       loggedIn: req.session.loggedIn,
@@ -35,11 +41,15 @@ router.get("/game/:id", async (req, res) => {
   let gameID;
 
   try {
+
     const todaysGames = await fetch(url, {
       method: "GET",
     });
+
     const currentData = await todaysGames.json();
+
     const allGames = currentData.dates[0].games;
+
     for (let g of allGames) {
       teamRecords.push({
         id: g.gamePk,
@@ -72,6 +82,7 @@ router.get("/game/:id", async (req, res) => {
     const gameFetch = await fetch(box, {
       method: "GET",
     });
+    
     const liveData = await gameFetch.json();
 
     res.render("selectedGame", {

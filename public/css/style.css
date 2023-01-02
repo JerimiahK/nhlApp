@@ -11,7 +11,7 @@ body {
 }
 
 .navbar {
-  background-color: rgba(13, 13, 13, 0.6862745098);
+  background-color: rgba(13, 13, 13, 0.9215686275);
 }
 
 #navbarText {
@@ -31,7 +31,7 @@ body {
 
 .collapseBackground {
   font-family: "Roboto Condensed", sans-serif;
-  background-color: rgba(13, 13, 13, 0.6862745098);
+  background-color: rgba(13, 13, 13, 0.9215686275);
 }
 
 #nextButton {
@@ -50,7 +50,7 @@ body {
 }
 
 .currentGameBox {
-  background-color: rgba(13, 13, 13, 0.8392156863);
+  background-color: rgba(13, 13, 13, 0.9215686275);
   height: 100%;
   color: #fff;
   border: 5px solid #fffefe;
