@@ -53,16 +53,20 @@ body {
 }
 
 .currentGameBox {
-    background-color: #ffffffbc;
+    // background-color: #ffffffbc;
+    background-color: #0d0d0dd6;
     height: 100%;
-    border: 5px solid black;
+    color: #fff;
+    // border: 5px solid black;
+    border: 5px solid #fffefe;
     border-radius: 30px;
 }
 
 .currentGameHeader {
     height: 40%;
     text-align: center;
-    border-bottom: 2px black solid;
+    // border-bottom: 2px black solid;
+    border-bottom: 5px solid rgb(255, 254, 254);
 }
 
 .currentGameHeader h5 {
@@ -102,12 +106,14 @@ body {
 }
 
 .headerPeriod {
-    color: $primary-color;
+    font-weight: 800;
+    font-size: 125%;
     margin: 20px 0 0 0;
 }
 
 .headerTime {
-    color: $primary-color;
+    font-weight: 800;
+    font-size: 125%;
 }
 
 #headerLogo {
@@ -121,7 +127,8 @@ body {
 
 #statsColumn {
     font-weight: 700;
-    color: #0d0d0d;
+    // color: #0d0d0d;
+    color: #fff;
     height: 58%;
     width: 100%;
 }
@@ -139,7 +146,8 @@ body {
 }
 
 .columnLeft {
-    border-right: 2px solid black;
+    // border-right: 2px solid black;
+    border-right: 5px solid #fffefe;
 }
 
 .liveStat {
@@ -165,7 +173,7 @@ body {
 }
 
 .form-label {
-    color: #0d0d0d;
+    color: #fff;
 }
 
 .loginButton {
@@ -174,7 +182,7 @@ body {
 }
 
 #loginCreate {
-    color: #0d0d0d;
+    color: #fff;
     text-align: center;
 }
 
@@ -188,11 +196,11 @@ body {
 
 #allGamesBox {
     text-decoration: none;
-    color: #0d0d0d;
+    color: #fff;
     margin: 10px;
     font-weight: 800;
     font-size: 95%;
-    background: #dcdcdc;
+    background-color: #0d0d0dd6;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
