@@ -50,18 +50,20 @@ router.get("/", async (req, res) => {
 
     // creates a function that contains logic to display the most current game to be played, being played, or the last game of the night that finished
     const gameIDStatus = function () {
-      if (gamesArray[0].status == "In Progress" || "In Progress - Critical") {
+      if (gamesArray[0].status == "Scheduled" || "Pre-Game") {
+        gameID = scheduled[0].id;
+      } else if (
+        gamesArray[0].status == "In Progress" ||
+        "In Progress - Critical"
+      ) {
         gameID = inProgress.pop().id;
       } else if (gamesArray.at(-1).status == "Final") {
         gameID = final.pop().id;
-      } else {
-        gameID = games[0].gamePk;
       }
     };
-
-    //calls the gameIDStatus function to determine what the most current game ID is based on the games status'
     gameIDStatus();
-
+    console.log(gameID);
+    //calls the gameIDStatus function to determine what the most current game ID is based on the games status'
     //creates a for loop to find the the current teams records based on comparing the gameID with the teams record ID
     for (let r of teamRecords) {
       if (gameID === r.id) {

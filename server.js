@@ -9,7 +9,6 @@ require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-  console.log(process.env.MONGODB_URL);
 
 const store = new MongoDBStore({
   uri: process.env.MONGODB_URL,
