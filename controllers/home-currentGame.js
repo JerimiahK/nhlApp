@@ -59,7 +59,7 @@ router.get("/", async (req, res) => {
       }
     };
     gameIDScheduled();
-    console.log(inProgress);
+
     //calls the gameIDStatus function to determine what the most current game ID is based on the games status'
     //creates a for loop to find the the current teams records based on comparing the gameID with the teams record ID
     for (let r of teamRecords) {
