@@ -22,10 +22,12 @@ router.get("/", async (req, res) => {
 
     //creates a new array of the games, but only with the information we need
     for (let g of games) {
+      //puts just the id and status of todays games into a gamesArray
       gamesArray.push({
         id: g.gamePk,
         status: g.status.detailedState,
       });
+      //puts the home and away team records into an array
       teamRecords.push({
         id: g.gamePk,
         homeWins: g.teams.home.leagueRecord.wins,
@@ -36,10 +38,12 @@ router.get("/", async (req, res) => {
         awayTies: g.teams.away.leagueRecord.ot,
       });
     }
+
     //filters out an array of the games that are scheduled
     const scheduled = gamesArray.filter(
       (status) => status.status == "Scheduled"
     );
+
     //filters out an array of the games that are in progress
     const inProgress = gamesArray.filter(
       (status) => status.status == "In Progress"
@@ -58,8 +62,10 @@ router.get("/", async (req, res) => {
         gameID = final.pop().id;
       }
     };
-    gameIDScheduled();
+
     //calls the gameIDStatus function to determine what the most current game ID is based on the games status'
+    gameIDScheduled();
+
     //creates a for loop to find the the current teams records based on comparing the gameID with the teams record ID
     for (let r of teamRecords) {
       if (gameID === r.id) {
@@ -73,7 +79,7 @@ router.get("/", async (req, res) => {
         };
       }
     }
-console.log(gameID);
+
     //creates a variable containing the URL for the NHL API to get the most current game feed stats using the gameID
     const box = `https://statsapi.web.nhl.com/api/v1/game/${gameID}/feed/live`;
 
